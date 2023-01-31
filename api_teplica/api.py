@@ -1,4 +1,3 @@
-from config import config
 import requests as rq
 import json
 
@@ -46,7 +45,7 @@ class TeplicaApi:
         :return: response
         """
         data = {"state": status}
-        result = rq.patch(f"https://dt.miet.ru/ppo_it/api/fork_drive/", params=data, headers=self.head_token)
+        result = rq.patch(f"https://dt.miet.ru/ppo_it/api/fork_drive", params=data, headers=self.head_token)
         return result
 
     def patch_watering(self, num: int, status: int):
@@ -75,4 +74,4 @@ class TeplicaApi:
         Initialization of api, needed token
         :param token: token
         """
-        head_token = {"X-Auth-Token": token}
+        self.head_token = {"X-Auth-Token": token}
