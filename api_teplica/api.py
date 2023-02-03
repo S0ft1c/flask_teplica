@@ -11,7 +11,7 @@ class TeplicaApi:
 
     def get_temp_hum(self, num: int):
         """
-        This function get information about temperature and humanity from device with ids (1-6)
+        This function get information about temperature and humanity from device with ids (1-4)
         :param num: device's id
         :return: dict
             {
