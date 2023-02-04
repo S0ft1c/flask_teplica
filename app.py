@@ -4,6 +4,7 @@ from database import db_sqlite as db
 from flask import request
 from flask import redirect
 from api_teplica import api
+from help import help
 
 # main Flask app
 app = Flask(__name__)
@@ -15,7 +16,8 @@ def drop_tables():
     return redirect("/")
 
 
-@app.route('/')  # route in the / address
+@app.route('/')
+@app.route('/index/')  # route in the / address
 def index():
     database = db.DataBase(False)
     user_params = database.get_user_params()  # get all user_params
@@ -48,6 +50,69 @@ def user_params_update():
         return redirect("/")
     else:
         return redirect("/")
+
+
+@app.route('/get_all_data/')
+def get_all_data():
+    page = request.args.get("page")
+    api_sys = api.TeplicaApi("")
+    database = db.DataBase(False)
+    for i in range(1, 5):
+        data = api_sys.get_temp_hum(i)
+        database.insert_temp_hum(data["id"], data["temperature"], data["humidity"])
+    for i in range(1, 7):
+        data = api_sys.get_ground_hum(i)
+        database.insert_ground_hum(data["id"], data["humidity"])
+    return redirect(f'/{page}/')
+
+
+@app.route('/fork_open/')
+def fork_open():
+    state = request.args.get("state")  # get an arg from address
+    api_sys = api.TeplicaApi("")
+    database = db.DataBase(False)
+
+    can = help.average_temp()
+
+    if can:
+        state = 1 if state == "on" else 0  # what we want to do with fork
+        response = api_sys.patch_fork(status=state)  # patch fork via api
+        print(response)
+        database.update_fork(bool(state))
+    return redirect("/")
+
+
+@app.route('/humanity_open/')
+def humanity_open():
+    state = request.args.get("state")
+    api_sys = api.TeplicaApi("")
+    database = db.DataBase(False)
+
+    can = help.average_hum()
+
+    if can:
+        state = 1 if state == "on" else 0  # what we want to do with hum
+        response = api_sys.patch_total_hum(state)
+        print(response)
+        database.update_humanity(bool(state))
+    return redirect("/")
+
+
+@app.route('/hb_open/')
+def hb_open():
+    num = request.args.get("num")
+    state = request.args.get("state")
+    api_sys = api.TeplicaApi("")
+    database = db.DataBase(False)
+    num = int(num)
+
+    can = help.average_hb(num)
+    if can:
+        state = 1 if state == "on" else 0
+        response = api_sys.patch_watering(num=num, status=state)
+        print(response)
+        database.update_hb_device(num, state)
+    return redirect("/")
 
 
 if __name__ == '__main__':

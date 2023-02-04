@@ -9,6 +9,11 @@
 <link rel="stylesheet" href="../../static/Управление.css" media="screen">
     <script class="u-script" type="text/javascript" src="../../static/jquery.js" defer=""></script>
     <script class="u-script" type="text/javascript" src="../../static/nicepage.js" defer=""></script>
+    <script>
+        window.setTimeout(function (){
+            window.location.href = "http://127.0.0.1:5000/get_all_data/?page=index";
+        },60000)
+    </script>
     <meta name="generator" content="Nicepage 5.3.6, nicepage.com">
     <meta name="referrer" content="origin">
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
@@ -91,62 +96,102 @@
                 </p>
               </div>
             </div>
-            <a href="https://nicepage.one" class="u-border-none u-btn u-btn-round u-button-style u-custom-color-2 u-hover-custom-color-3 u-radius-6 u-text-body-alt-color u-btn-2">Открыть&nbsp;<br>форточки<br>
+          {% if fork_state %}
+            <a href="/fork_open/?state=off" class="u-border-none u-btn u-btn-round u-button-style u-custom-color-2 u-hover-custom-color-3 u-radius-6 u-text-body-alt-color u-btn-2">Открыть&nbsp;<br>форточки<br>
             </a>
+          {% else %}
+            <a href="/fork_open/?state=on" class="u-border-none u-btn u-btn-round u-button-style u-custom-color-2 u-hover-custom-color-3 u-radius-6 u-text-body-alt-color u-btn-2">Открыть&nbsp;<br>форточки<br>
+            </a>
+          {% endif %}
             <div class="u-expanded-width-sm u-expanded-width-xs u-layout-grid u-list u-list-1">
               <div class="u-repeater u-repeater-1">
                 <div class="u-container-style u-custom-color-1 u-custom-item u-list-item u-radius-50 u-repeater-item u-shape-round">
                   <div class="u-container-layout u-similar-container u-container-layout-3">
-                    <a href="https://nicepage.com/k/chart-html-templates" class="u-btn u-btn-round u-button-style u-custom-item u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-3">1<br>
+                  {% if hb_1 %}
+                    <a href="/hb_open?num=1&state=off" class="u-btn u-btn-round u-button-style u-custom-item u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-3">1<br>
                     </a>
+                  {% else %}
+                    <a href="/hb_open?num=1&state=on" class="u-btn u-btn-round u-button-style u-custom-item u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-3">1<br>
+                    </a>
+                  {% endif %}
                     <p class="u-align-center u-custom-item u-text u-text-4">{% if hb_1 %}ON{% else %}OFF{% endif %}<br>
                     </p>
                   </div>
                 </div>
                 <div class="u-container-style u-custom-color-1 u-custom-item u-list-item u-radius-50 u-repeater-item u-shape-round">
                   <div class="u-container-layout u-similar-container u-container-layout-4">
-                    <a href="https://nicepage.com/k/chart-html-templates" class="u-btn u-btn-round u-button-style u-custom-item u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-4">2<br>
+                      {% if hb_2 %}
+                    <a href="/hb_open?num=2&state=off" class="u-btn u-btn-round u-button-style u-custom-item u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-3">2<br>
                     </a>
+                  {% else %}
+                    <a href="/hb_open?num=2&state=on" class="u-btn u-btn-round u-button-style u-custom-item u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-3">2<br>
+                    </a>
+                  {% endif %}
                     <p class="u-align-center u-custom-item u-text u-text-5">{% if hb_2 %}ON{% else %}OFF{% endif %}<br>
                     </p>
                   </div>
                 </div>
                 <div class="u-container-style u-custom-color-1 u-custom-item u-list-item u-radius-50 u-repeater-item u-shape-round">
                   <div class="u-container-layout u-similar-container u-container-layout-5">
-                    <a href="https://nicepage.com/k/chart-html-templates" class="u-btn u-btn-round u-button-style u-custom-item u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-5">3<br>
+                    {% if hb_3 %}
+                    <a href="/hb_open?num=3&state=off" class="u-btn u-btn-round u-button-style u-custom-item u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-3">3<br>
                     </a>
+                  {% else %}
+                    <a href="/hb_open?num=3&state=on" class="u-btn u-btn-round u-button-style u-custom-item u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-3">3<br>
+                    </a>
+                  {% endif %}
                     <p class="u-align-center u-custom-item u-text u-text-6">{% if hb_3 %}ON{% else %}OFF{% endif %}<br>
                     </p>
                   </div>
                 </div>
                 <div class="u-container-style u-custom-color-1 u-custom-item u-list-item u-radius-50 u-repeater-item u-shape-round">
                   <div class="u-container-layout u-similar-container u-container-layout-6">
-                    <a href="https://nicepage.com/k/chart-html-templates" class="u-btn u-btn-round u-button-style u-custom-item u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-6">4<br>
+                    {% if hb_4 %}
+                    <a href="/hb_open?num=4&state=off" class="u-btn u-btn-round u-button-style u-custom-item u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-3">4<br>
                     </a>
+                  {% else %}
+                    <a href="/hb_open?num=4&state=on" class="u-btn u-btn-round u-button-style u-custom-item u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-3">4<br>
+                    </a>
+                  {% endif %}
                     <p class="u-align-center u-custom-item u-text u-text-7">{% if hb_4 %}ON{% else %}OFF{% endif %}<br>
                     </p>
                   </div>
                 </div>
                 <div class="u-container-style u-custom-color-1 u-custom-item u-list-item u-radius-50 u-repeater-item u-shape-round">
                   <div class="u-container-layout u-similar-container u-container-layout-7">
-                    <a href="https://nicepage.com/k/chart-html-templates" class="u-btn u-btn-round u-button-style u-custom-item u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-7">5<br>
+                    {% if hb_5 %}
+                    <a href="/hb_open?num=5&state=off" class="u-btn u-btn-round u-button-style u-custom-item u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-3">5<br>
                     </a>
+                  {% else %}
+                    <a href="/hb_open?num=5&state=on" class="u-btn u-btn-round u-button-style u-custom-item u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-3">5<br>
+                    </a>
+                  {% endif %}
                     <p class="u-align-center u-custom-item u-text u-text-8">{% if hb_5 %}ON{% else %}OFF{% endif %}<br>
                     </p>
                   </div>
                 </div>
                 <div class="u-container-style u-custom-color-1 u-custom-item u-list-item u-radius-50 u-repeater-item u-shape-round">
                   <div class="u-container-layout u-similar-container u-container-layout-8">
-                    <a href="https://nicepage.com/k/chart-html-templates" class="u-btn u-btn-round u-button-style u-custom-item u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-8">6<br>
+                    {% if hb_6 %}
+                    <a href="/hb_open?num=6&state=off" class="u-btn u-btn-round u-button-style u-custom-item u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-3">6<br>
                     </a>
+                  {% else %}
+                    <a href="/hb_open?num=6&state=on" class="u-btn u-btn-round u-button-style u-custom-item u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-3">6<br>
+                    </a>
+                  {% endif %}
                     <p class="u-align-center u-custom-item u-text u-text-9">{% if hb_6 %}ON{% else %}OFF{% endif %}<br>
                     </p>
                   </div>
                 </div>
               </div>
             </div>
-            <a href="https://nicepage.one" class="u-border-none u-btn u-btn-round u-button-style u-custom-color-2 u-hover-custom-color-3 u-radius-6 u-btn-9">Включить&nbsp;<br>увлажнение<br>
+          {% if humanity_state %}
+            <a href="/humanity_open?state=off" class="u-border-none u-btn u-btn-round u-button-style u-custom-color-2 u-hover-custom-color-3 u-radius-6 u-btn-9">Включить&nbsp;<br>увлажнение<br>
             </a>
+          {% else %}
+            <a href="/humanity_open?state=on" class="u-border-none u-btn u-btn-round u-button-style u-custom-color-2 u-hover-custom-color-3 u-radius-6 u-btn-9">Включить&nbsp;<br>увлажнение<br>
+            </a>
+          {% endif %}
             <div class="u-container-style u-group u-palette-1-base u-radius-10 u-shape-round u-group-3">
               <div class="u-container-layout u-valign-middle-lg u-valign-middle-md u-valign-middle-sm u-valign-middle-xs u-container-layout-9">
                 <p class="u-align-center u-text u-text-default u-text-10">{% if humanity_state %}ON{% else %}OFF{% endif %}<br>

@@ -19,6 +19,9 @@ class DataBase:
 
         if dropping_tables:  # if we want drop all data (for testing)
             self.c.execute("""drop table if exists `params`""")
+            self.c.execute("""drop table if exists `states`""")
+            self.c.execute("""drop table if exists `devices_data`""")
+            self.c.execute("""drop table if exists `ground_humanity`""")
 
             # create a table with user parameters
             self.c.execute("""create table if not exists `params` (
@@ -40,6 +43,21 @@ class DataBase:
                               `hb_5` bool,
                               `hb_6` bool                                
                         )""")
+
+            # this table for device's data, temperature and humanity
+            self.c.execute("""create table if not exists `devices_data` (
+                            id integer primary key,
+                            `device_id` int,
+                            `temperature` real,
+                            `humanity` real
+            )""")
+
+            # this table for ground humanity
+            self.c.execute("""create table if not exists `ground_humanity` (
+                                id integer primary key,
+                                `device_id` int,
+                                `humanity` real
+            )""")
 
             # it's to be cool, create a line with default parameters in `params` table (we don't needed to write ADD)
             self.c.execute("""insert into `params` (`temperature`, `humanity`, `hb_persent`) values (10, 10, 10)""")
@@ -148,3 +166,54 @@ class DataBase:
         """
         self.c.execute(f"""update `states` set `hb_{device_id}`=? where id=1""", (new_state,))
         self.conn.commit()
+
+    def insert_temp_hum(self, device_id, temperature, humanity):
+        """
+        this function insert data to the table `device_data`
+        :param device_id: the num of the device (1-6)
+        :param temperature: the temperature that we got from api
+        :param humanity: the humanity that we got from api
+        :return: None
+        """
+        self.c.execute("""insert into `devices_data` (`device_id`, `temperature`, `humanity`) values (?, ?, ?)""",
+                       (device_id, temperature, humanity,))
+        self.conn.commit()
+
+    def insert_ground_hum(self, device_id, humanity):
+        """
+        this function insert data to the table `ground_humanity`
+        :param device_id: device's num (1-6)
+        :param humanity: the value of humanity given from the api
+        :return: None
+        """
+        self.c.execute("""insert into `ground_humanity` (`device_id`, `humanity`) values (?, ?)""",
+                       (device_id, humanity,))
+        self.conn.commit()
+
+    def get_all_temperature(self):
+        """
+        this function gets all temperature from database
+        :return: list of tuples with one item - temperature
+        """
+        data = self.c.execute("""select `temperature` from devices_data""")
+        data = data.fetchall()
+        return data
+
+    def get_all_humanity(self):
+        """
+        this function gets all humanity from database
+        :return: list of tuples with one item - humanity
+        """
+        data = self.c.execute("""select `humanity` from `devices_data`""")
+        data = data.fetchall()
+        return data
+
+    def get_all_hb_in_one(self, num):
+        """
+        This function gets all humanity (from only one device) from database
+        :param num: the num of device (1-6)
+        :return: list of tuples with one item - humanity
+        """
+        data = self.c.execute("""select `humanity` from `ground_humanity` where device_id=?""", (num,))
+        data = data.fetchall()
+        return data
