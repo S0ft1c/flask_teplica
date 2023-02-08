@@ -96,11 +96,16 @@
                 </p>
               </div>
             </div>
-          {% if fork_state %}
-            <a href="/fork_open/?state=off" class="u-border-none u-btn u-btn-round u-button-style u-custom-color-2 u-hover-custom-color-3 u-radius-6 u-text-body-alt-color u-btn-2">Открыть&nbsp;<br>форточки<br>
-            </a>
+          {% if fork_can %}
+              {% if fork_state %}
+                <a href="/fork_open/?state=off" class="u-border-none u-btn u-btn-round u-button-style u-custom-color-2 u-hover-custom-color-3 u-radius-6 u-text-body-alt-color u-btn-2">Открыть&nbsp;<br>форточки<br>
+                </a>
+              {% else %}
+                <a href="/fork_open/?state=on" class="u-border-none u-btn u-btn-round u-button-style u-custom-color-2 u-hover-custom-color-3 u-radius-6 u-text-body-alt-color u-btn-2">Открыть&nbsp;<br>форточки<br>
+                </a>
+              {% endif %}
           {% else %}
-            <a href="/fork_open/?state=on" class="u-border-none u-btn u-btn-round u-button-style u-custom-color-2 u-hover-custom-color-3 u-radius-6 u-text-body-alt-color u-btn-2">Открыть&nbsp;<br>форточки<br>
+            <a disabled="disabled" class="u-border-none u-btn u-btn-round u-button-style u-custom-color-2 u-hover-custom-color-3 u-radius-6 u-text-body-alt-color u-btn-2">Открыть&nbsp;<br>форточки<br>
             </a>
           {% endif %}
             <div class="u-expanded-width-sm u-expanded-width-xs u-layout-grid u-list u-list-1">

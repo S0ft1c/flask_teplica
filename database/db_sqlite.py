@@ -85,7 +85,7 @@ class DataBase:
 
         self.conn.commit()
 
-    def update_user_params(self, t=0, h=0, hb=0):
+    def update_user_params(self, t=-1, h=-1, hb=-1):
         """
         This function updates user parameters from `params`
         :parameter: t - user's new temperature (default = -1, that means that we don't need to change info)
@@ -94,13 +94,13 @@ class DataBase:
         :return: bool (True - good or False - not good)
         """
         # if we have data, we'll update it
-        if t != 0:
+        if t != -1:
             self.c.execute("""update `params` set `temperature`=? where `id`=1""", (t,))
             self.conn.commit()
-        if h != 0:
+        if h != -1:
             self.c.execute("""update `params` set `humanity`=? where `id`=1""", (h,))
             self.conn.commit()
-        if hb != 0:
+        if hb != -1:
             self.c.execute("""update `params` set `hb_persent`=? where `id`=1""", (hb,))
             self.conn.commit()
         return True
