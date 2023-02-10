@@ -105,19 +105,24 @@
                 </a>
               {% endif %}
           {% else %}
-            <a disabled="disabled" class="u-border-none u-btn u-btn-round u-button-style u-custom-color-2 u-hover-custom-color-3 u-radius-6 u-text-body-alt-color u-btn-2">Открыть&nbsp;<br>форточки<br>
+            <a disabled="disabled" class="u-border-none u-btn u-btn-round u-button-style u-custom-color-2 u-hover-custom-color-3 u-radius-6 u-text-body-alt-color u-btn-2">Открыть&nbsp;<br>форточку<br>
             </a>
           {% endif %}
             <div class="u-expanded-width-sm u-expanded-width-xs u-layout-grid u-list u-list-1">
               <div class="u-repeater u-repeater-1">
                 <div class="u-container-style u-custom-color-1 u-custom-item u-list-item u-radius-50 u-repeater-item u-shape-round">
                   <div class="u-container-layout u-similar-container u-container-layout-3">
-                  {% if hb_1 %}
-                    <a href="/hb_open?num=1&state=off" class="u-btn u-btn-round u-button-style u-custom-item u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-3">1<br>
-                    </a>
+                  {% if hb_1_can %}
+                      {% if hb_1 %}
+                        <a href="/hb_open?num=1&state=off" class="u-btn u-btn-round u-button-style u-custom-item u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-3">1<br>
+                        </a>
+                      {% else %}
+                        <a href="/hb_open?num=1&state=on" class="u-btn u-btn-round u-button-style u-custom-item u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-3">1<br>
+                        </a>
+                      {% endif %}
                   {% else %}
-                    <a href="/hb_open?num=1&state=on" class="u-btn u-btn-round u-button-style u-custom-item u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-3">1<br>
-                    </a>
+                      <a disabled="disabled" class="u-btn u-btn-round u-button-style u-custom-item u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-3">1<br>
+                        </a>
                   {% endif %}
                     <p class="u-align-center u-custom-item u-text u-text-4">{% if hb_1 %}ON{% else %}OFF{% endif %}<br>
                     </p>
@@ -125,12 +130,17 @@
                 </div>
                 <div class="u-container-style u-custom-color-1 u-custom-item u-list-item u-radius-50 u-repeater-item u-shape-round">
                   <div class="u-container-layout u-similar-container u-container-layout-4">
+                    {% if hb_2_can %}
                       {% if hb_2 %}
-                    <a href="/hb_open?num=2&state=off" class="u-btn u-btn-round u-button-style u-custom-item u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-3">2<br>
-                    </a>
-                  {% else %}
-                    <a href="/hb_open?num=2&state=on" class="u-btn u-btn-round u-button-style u-custom-item u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-3">2<br>
-                    </a>
+                        <a href="/hb_open?num=2&state=off" class="u-btn u-btn-round u-button-style u-custom-item u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-3">2<br>
+                        </a>
+                      {% else %}
+                        <a href="/hb_open?num=2&state=on" class="u-btn u-btn-round u-button-style u-custom-item u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-3">2<br>
+                        </a>
+                      {% endif %}
+                    {% else %}
+                      <a disabled="disabled" class="u-btn u-btn-round u-button-style u-custom-item u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-3">2<br>
+                        </a>
                   {% endif %}
                     <p class="u-align-center u-custom-item u-text u-text-5">{% if hb_2 %}ON{% else %}OFF{% endif %}<br>
                     </p>
@@ -138,12 +148,17 @@
                 </div>
                 <div class="u-container-style u-custom-color-1 u-custom-item u-list-item u-radius-50 u-repeater-item u-shape-round">
                   <div class="u-container-layout u-similar-container u-container-layout-5">
-                    {% if hb_3 %}
-                    <a href="/hb_open?num=3&state=off" class="u-btn u-btn-round u-button-style u-custom-item u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-3">3<br>
-                    </a>
-                  {% else %}
-                    <a href="/hb_open?num=3&state=on" class="u-btn u-btn-round u-button-style u-custom-item u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-3">3<br>
-                    </a>
+                    {% if hb_3_can %}
+                      {% if hb_3 %}
+                        <a href="/hb_open?num=3&state=off" class="u-btn u-btn-round u-button-style u-custom-item u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-3">3<br>
+                        </a>
+                      {% else %}
+                        <a href="/hb_open?num=3&state=on" class="u-btn u-btn-round u-button-style u-custom-item u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-3">3<br>
+                        </a>
+                      {% endif %}
+                    {% else %}
+                      <a disabled="disabled" class="u-btn u-btn-round u-button-style u-custom-item u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-3">3<br>
+                      </a>
                   {% endif %}
                     <p class="u-align-center u-custom-item u-text u-text-6">{% if hb_3 %}ON{% else %}OFF{% endif %}<br>
                     </p>
@@ -151,12 +166,17 @@
                 </div>
                 <div class="u-container-style u-custom-color-1 u-custom-item u-list-item u-radius-50 u-repeater-item u-shape-round">
                   <div class="u-container-layout u-similar-container u-container-layout-6">
-                    {% if hb_4 %}
-                    <a href="/hb_open?num=4&state=off" class="u-btn u-btn-round u-button-style u-custom-item u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-3">4<br>
-                    </a>
-                  {% else %}
-                    <a href="/hb_open?num=4&state=on" class="u-btn u-btn-round u-button-style u-custom-item u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-3">4<br>
-                    </a>
+                    {% if hb_4_can %}
+                      {% if hb_4 %}
+                        <a href="/hb_open?num=4&state=off" class="u-btn u-btn-round u-button-style u-custom-item u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-3">4<br>
+                        </a>
+                      {% else %}
+                        <a href="/hb_open?num=4&state=on" class="u-btn u-btn-round u-button-style u-custom-item u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-3">4<br>
+                        </a>
+                      {% endif %}
+                    {% else %}
+                      <a disabled="disabled" class="u-btn u-btn-round u-button-style u-custom-item u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-3">4<br>
+                        </a>
                   {% endif %}
                     <p class="u-align-center u-custom-item u-text u-text-7">{% if hb_4 %}ON{% else %}OFF{% endif %}<br>
                     </p>
@@ -164,12 +184,17 @@
                 </div>
                 <div class="u-container-style u-custom-color-1 u-custom-item u-list-item u-radius-50 u-repeater-item u-shape-round">
                   <div class="u-container-layout u-similar-container u-container-layout-7">
-                    {% if hb_5 %}
-                    <a href="/hb_open?num=5&state=off" class="u-btn u-btn-round u-button-style u-custom-item u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-3">5<br>
-                    </a>
-                  {% else %}
-                    <a href="/hb_open?num=5&state=on" class="u-btn u-btn-round u-button-style u-custom-item u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-3">5<br>
-                    </a>
+                    {% if hb_5_can %}
+                      {% if hb_5 %}
+                        <a href="/hb_open?num=5&state=off" class="u-btn u-btn-round u-button-style u-custom-item u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-3">5<br>
+                        </a>
+                      {% else %}
+                        <a href="/hb_open?num=5&state=on" class="u-btn u-btn-round u-button-style u-custom-item u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-3">5<br>
+                        </a>
+                      {% endif %}
+                    {% else %}
+                      <a disabled="disabled" class="u-btn u-btn-round u-button-style u-custom-item u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-3">5<br>
+                        </a>
                   {% endif %}
                     <p class="u-align-center u-custom-item u-text u-text-8">{% if hb_5 %}ON{% else %}OFF{% endif %}<br>
                     </p>
@@ -177,12 +202,17 @@
                 </div>
                 <div class="u-container-style u-custom-color-1 u-custom-item u-list-item u-radius-50 u-repeater-item u-shape-round">
                   <div class="u-container-layout u-similar-container u-container-layout-8">
+                  {% if hb_6_can %}
                     {% if hb_6 %}
-                    <a href="/hb_open?num=6&state=off" class="u-btn u-btn-round u-button-style u-custom-item u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-3">6<br>
-                    </a>
+                      <a href="/hb_open?num=6&state=off" class="u-btn u-btn-round u-button-style u-custom-item u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-3">6<br>
+                      </a>
+                    {% else %}
+                      <a href="/hb_open?num=6&state=on" class="u-btn u-btn-round u-button-style u-custom-item u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-3">6<br>
+                      </a>
+                    {% endif %}
                   {% else %}
-                    <a href="/hb_open?num=6&state=on" class="u-btn u-btn-round u-button-style u-custom-item u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-3">6<br>
-                    </a>
+                    <a disabled="disabled" class="u-btn u-btn-round u-button-style u-custom-item u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-3">6<br>
+                      </a>
                   {% endif %}
                     <p class="u-align-center u-custom-item u-text u-text-9">{% if hb_6 %}ON{% else %}OFF{% endif %}<br>
                     </p>
@@ -190,11 +220,16 @@
                 </div>
               </div>
             </div>
-          {% if humanity_state %}
-            <a href="/humanity_open?state=off" class="u-border-none u-btn u-btn-round u-button-style u-custom-color-2 u-hover-custom-color-3 u-radius-6 u-btn-9">Включить&nbsp;<br>увлажнение<br>
-            </a>
+          {% if humanity_can %}
+              {% if humanity_state %}
+                <a href="/humanity_open?state=off" class="u-border-none u-btn u-btn-round u-button-style u-custom-color-2 u-hover-custom-color-3 u-radius-6 u-btn-9">Включить&nbsp;<br>увлажнение<br>
+                </a>
+              {% else %}
+                <a href="/humanity_open?state=on" class="u-border-none u-btn u-btn-round u-button-style u-custom-color-2 u-hover-custom-color-3 u-radius-6 u-btn-9">Включить&nbsp;<br>увлажнение<br>
+                </a>
+              {% endif %}
           {% else %}
-            <a href="/humanity_open?state=on" class="u-border-none u-btn u-btn-round u-button-style u-custom-color-2 u-hover-custom-color-3 u-radius-6 u-btn-9">Включить&nbsp;<br>увлажнение<br>
+            <a disabled="disabled" class="u-border-none u-btn u-btn-round u-button-style u-custom-color-2 u-hover-custom-color-3 u-radius-6 u-btn-9">Включить&nbsp;<br>увлажнение<br>
             </a>
           {% endif %}
             <div class="u-container-style u-group u-palette-1-base u-radius-10 u-shape-round u-group-3">
