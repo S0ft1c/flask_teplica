@@ -26,12 +26,19 @@ def index():
         "user_humanity": user_params[2],
         "user_hb_persent": user_params[3],
         "fork_state": database.get_fork()[0],  # get fork state
-        "for_can": help.average_temp(),
-        "humanity_state": database.get_humanity()[0]  # get humanity state
+        "fork_can": help.average_temp(),
+        "humanity_state": database.get_humanity()[0],  # get humanity state
+        "humanity_can": help.average_hum(),
+        "hb_1_can": help.average_hb(1),     # not from 0, yes?
+        "hb_2_can": help.average_hb(2),
+        "hb_3_can": help.average_hb(3),
+        "hb_4_can": help.average_hb(4),
+        "hb_5_can": help.average_hb(5),
+        "hb_6_can": help.average_hb(6),
     }
     for i in range(1, 7):  # it's for good adding data about hb_devices
         context[f"hb_{i}"] = database.get_hb_device(i)[0]
-        context[f"hb_can_{i}"] = help.average_hb(i)
+        # context[f"hb_can_{i}"] = help.average_hb(i) looks like its useless...
 
     return render_template("site/index.html", **context)
 
