@@ -36,6 +36,19 @@ def index():
     return render_template("site/index.html", **context)
 
 
+# ЗДЕСЬ ВСЕ МЕНЯТЬ НАДО !!!
+@app.route('/graphs/')  # route in the / address
+def graphs():
+    database = db.DataBase(False)
+    graphs_params = database.get_user_params()  # get all graphs_params
+    context = {
+        "temperature": graphs_params[1],
+        "humanity": graphs_params[2],
+        "hb_persent": graphs_params[3],
+        "humanity_state": database.get_humanity()[0]  # get humanity state
+    }
+    return render_template("site/graphs.html", **context)
+
 @app.route('/user_params_update/', methods=['GET', 'POST'])
 def user_params_update():
     database = db.DataBase(False)
@@ -67,6 +80,18 @@ def get_all_data():
         database.insert_ground_hum(data["id"], data["humidity"])
     return redirect(f'/{page}/')
 
+@app.route('/get_graphs_data/')
+def get_graphs_data():
+    page = request.args.get("page")
+    api_sys = api.TeplicaApi("")
+    database = db.DataBase(False)
+    for i in range(1, 5):
+        data = api_sys.get_temp_hum(i)
+        database.insert_temp_hum(data["id"], data["temperature"], data["humidity"])
+    for i in range(1, 7):
+        data = api_sys.get_ground_hum(i)
+        database.insert_ground_hum(data["id"], data["humidity"])
+    return redirect(f'/{page}/')
 
 @app.route('/fork_open/')
 def fork_open():

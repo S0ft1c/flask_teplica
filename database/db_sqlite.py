@@ -1,6 +1,5 @@
 import sqlite3 as sql
 
-
 class DataBase:
     """
     This is class for working with sqlite3
@@ -43,6 +42,12 @@ class DataBase:
                               `hb_5` bool,
                               `hb_6` bool                                
                         )""")
+
+            # this table for last ten temperature data, temperature
+            self.c.execute("""create table if not exists `temps_data` 
+                            id integer primary key,
+                            `temperatures`            
+            """)
 
             # this table for device's data, temperature and humanity
             self.c.execute("""create table if not exists `devices_data` (
