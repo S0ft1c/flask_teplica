@@ -39,10 +39,17 @@
             </a>
           </div>
           <div class="u-nav-container">
-            <ul class="u-nav u-unstyled u-nav-1"><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-custom-color-3 u-text-hover-custom-color-1" href="Главная.html" style="padding: 10px 20px;">Главная</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-custom-color-3 u-text-hover-custom-color-1" href="Управление.html" style="padding: 10px 20px;">Управление</a>
+            <ul class="u-nav u-unstyled u-nav-1"><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-custom-color-3 u-text-hover-custom-color-1" href="/index/" style="padding: 10px 20px;">Управление</a>
 </li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-custom-color-3 u-text-hover-custom-color-1" href="Графики.html" style="padding: 10px 20px;">Графики</a>
-</li></ul>
+</li>
+                {% if extreme_state %}
+                     <li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-custom-color-3 u-text-hover-custom-color-1" href="/extreme_update?state=on&page=index/" style="padding: 10px 20px;">Экстренное управление - Включено</a>
+                     </li>
+                {% else %}
+                    <li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-custom-color-3 u-text-hover-custom-color-1" href="/extreme_update?state=off&page=index/" style="padding: 10px 20px;">Экстренное управление - Выключено</a>
+                     </li>
+                {% endif %}
+            </ul>
           </div>
           <div class="u-nav-container-collapse">
             <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">

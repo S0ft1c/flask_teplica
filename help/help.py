@@ -7,6 +7,8 @@ def average_temp():
     :return: True or False (can use or not)
     """
     database = db.DataBase(False)
+    if database.get_extreme()[0]:
+        return True
     user_params = database.get_user_params()
     t = user_params[1]
     all_temperature = database.get_all_temperature()
@@ -23,6 +25,8 @@ def average_hum():
     :return: True of False (can we use or not)
     """
     database = db.DataBase(False)
+    if database.get_extreme()[0]:
+        return True
     user_params = database.get_user_params()
     h = user_params[2]
     all_humanity = database.get_all_humanity()
@@ -40,6 +44,8 @@ def average_hb(num):
     :return: can we use or not (True or False)
     """
     database = db.DataBase(False)
+    if database.get_extreme()[0]:
+        return True
     user_params = database.get_user_params()
     hb = user_params[3]
     all_hb = database.get_all_hb_in_one(num)
