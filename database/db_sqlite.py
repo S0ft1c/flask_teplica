@@ -40,7 +40,8 @@ class DataBase:
                               `hb_3` bool,
                               `hb_4` bool,
                               `hb_5` bool,
-                              `hb_6` bool                                
+                              `hb_6` bool,
+                              `extreme` bool                                
                         )""")
 
             # this table for last ten temperature data, temperature
@@ -76,9 +77,11 @@ class DataBase:
             `hb_3`,
             `hb_4`,
             `hb_5`,
-            `hb_6`
+            `hb_6`,
+            `extreme`
             ) values (
             False,
+            FALSE,
             FALSE,
             FALSE,
             FALSE,
@@ -221,4 +224,22 @@ class DataBase:
         """
         data = self.c.execute("""select `humanity` from `ground_humanity` where device_id=?""", (num,))
         data = data.fetchall()
+        return data
+
+    def update_extreme(self, state):
+        """
+        This function updates state of extreme work
+        :param state: the boolean value that we need to see
+        :return: None
+        """
+        self.c.execute("""update `states` set `extreme`=? where id=1""", (state,))
+        self.conn.commit()
+
+    def get_extreme(self):
+        """
+        This function gets information about extreme state
+        :return: tuple of data: (extreme)
+        """
+        data = self.c.execute("""select `extreme` from `states` where id=1""")
+        data = data.fetchone()
         return data
