@@ -40,7 +40,7 @@
           </div>
           <div class="u-nav-container">
             <ul class="u-nav u-unstyled u-nav-1"><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-custom-color-3 u-text-hover-custom-color-1" href="/index/" style="padding: 10px 20px;">Управление</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-custom-color-3 u-text-hover-custom-color-1" href="Графики.html" style="padding: 10px 20px;">Графики</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-custom-color-3 u-text-hover-custom-color-1" href="/graphs/" style="padding: 10px 20px;">Графики</a>
 </li>
                 {% if extreme_state %}
                      <li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-custom-color-3 u-text-hover-custom-color-1" href="/extreme_update?state=on&page=index/" style="padding: 10px 20px;">Экстренное управление - Включено</a>
@@ -55,10 +55,17 @@
             <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
               <div class="u-inner-container-layout u-sidenav-overflow">
                 <div class="u-menu-close"></div>
-                <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="Главная.html">Главная</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="Управление.html">Управление</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="Графики.html">Графики</a>
-</li></ul>
+                <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2">
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/index/">Управление</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/graphs/">Графики</a>
+                {% if extreme_state %}
+                     <li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-custom-color-3 u-text-hover-custom-color-1" href="/extreme_update?state=on&page=index/" style="padding: 10px 20px;">Экстренное управление - Включено</a>
+                     </li>
+                {% else %}
+                    <li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-custom-color-3 u-text-hover-custom-color-1" href="/extreme_update?state=off&page=index/" style="padding: 10px 20px;">Экстренное управление - Выключено</a>
+                     </li>
+                {% endif %}
+                </ul>
               </div>
             </div>
             <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
@@ -92,7 +99,7 @@
             </div>
           </form>
         </div>
-        <div class="u-absolute-hcenter u-border-6 u-border-custom-color-4 u-expanded-width-md u-expanded-width-sm u-expanded-width-xs u-line u-line-horizontal u-opacity u-opacity-65 u-line-1"></div>
+        <!--<div class="u-absolute-hcenter u-border-6 u-border-custom-color-4 u-expanded-width-md u-expanded-width-sm u-expanded-width-xs u-line u-line-horizontal u-opacity u-opacity-65 u-line-1"></div>-->
         <div class="u-container-style u-expanded-width-lg u-expanded-width-md u-expanded-width-sm u-expanded-width-xs u-group u-shape-rectangle u-group-1">
           <div class="u-container-layout u-valign-bottom-md u-valign-bottom-sm u-valign-bottom-xs u-container-layout-1">
             <h1 class="u-align-center u-custom-font u-font-raleway u-text u-text-default-lg u-text-default-md u-text-default-sm u-text-default-xl u-title u-text-2">Увлажнит​ели почвы<br>
@@ -252,7 +259,7 @@
     
     
     <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-1ca9"><div class="u-clearfix u-sheet u-sheet-1">
-        <p class="u-small-text u-text u-text-variant u-text-1">Пример текста. Кликните, чтобы выбрать элемент "Текст".</p>
+        <p class="u-small-text u-text u-text-variant u-text-1">Проект выполнен командой "Домино".</p>
       </div></footer>
   
 </body></html>

@@ -48,14 +48,15 @@ def average(x1, x2, x3, x4):
     temp = (x1 + x2 + x3 + x4) / 4
     return temp
 
+
 @app.route('/graphs/')  # route in the / address
 def graphs():
-    time = 60 # set max time that can be seemed
+    time = 30  # set max time that can be seemed
 
     database = db.DataBase(False)
     all_temp = database.get_all_temperature()  # get all temperature data
     all_hum = database.get_all_humanity()  # get all humidity data
-    average_data = [["time", "temperature", "humidity"]] * time # creating array for graphs
+    average_data = [["time", "temperature", "humidity"]] * time  # creating array for graphs
     temp_data = [["time", "t1", "t2", "t3", "t4"]] * time
     hum_data = [["time", "h1", "h2", "h3", "h4"]] * time
     hb_data = [["time", "hb1", "hb2", "hb3", "hb4", "hb5", "hb6"]] * time
@@ -69,8 +70,10 @@ def graphs():
 
     for i in range(-1, -(time + 1), -1):
         for j in range(-1, -(time + 1), -1):
-            at = average(*all_temp[i * 4 - 1], *all_temp[i * 4 - 2], *all_temp[i * 4 - 3], *all_temp[i * 4 - 4]) # average temperature
-            ah = average(*all_hum[i * 4 - 1], *all_hum[i * 4 - 2], *all_hum[i * 4 - 3], *all_hum[i * 4 - 4]) # average humidity
+            at = average(*all_temp[i * 4 - 1], *all_temp[i * 4 - 2], *all_temp[i * 4 - 3],
+                         *all_temp[i * 4 - 4])  # average temperature
+            ah = average(*all_hum[i * 4 - 1], *all_hum[i * 4 - 2], *all_hum[i * 4 - 3],
+                         *all_hum[i * 4 - 4])  # average humidity
             average_data[i] = [i, at, ah]  # creating array of data to insert them into graphs
 
             temp_data[i] = [i, *all_temp[i * 4 - 1], *all_temp[i * 4 - 2], *all_temp[i * 4 - 3], *all_temp[i * 4 - 4]]
@@ -82,8 +85,10 @@ def graphs():
         "temp_data": temp_data,
         "hum_data": hum_data,
         "hb_data": hb_data,
+        "extreme_can": database.get_extreme()[0]
     }
     return render_template("site/graphs.html", **context)
+
 
 @app.route('/user_params_update/', methods=['GET', 'POST'])
 def user_params_update():
@@ -115,6 +120,7 @@ def get_all_data():
         data = api_sys.get_ground_hum(i)
         database.insert_ground_hum(data["id"], data["humidity"])
     return redirect(f'/{page}/')
+
 
 @app.route('/fork_open/')
 def fork_open():

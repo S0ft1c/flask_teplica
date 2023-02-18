@@ -44,12 +44,6 @@ class DataBase:
                               `extreme` bool                                
                         )""")
 
-            # this table for last ten temperature data, temperature
-            self.c.execute("""create table if not exists `temps_data` 
-                            id integer primary key,
-                            `temperatures`            
-            """)
-
             # this table for device's data, temperature and humanity
             self.c.execute("""create table if not exists `devices_data` (
                             id integer primary key,
